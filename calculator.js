@@ -1,6 +1,8 @@
+const operators = ["+", "-", "x", "/", "=", "AC"];
+const digits = Array.from(Array(10).keys());
+
 function generateCalculatorUI() {
     const operatorContainer = document.querySelector(".operatorContainer");
-    const operators = ["+", "-", "x", "/", "=", "AC"];
     operators.forEach(operator => {
         const button = document.createElement("button");
         button.textContent = operator;
@@ -9,7 +11,6 @@ function generateCalculatorUI() {
         operatorContainer.appendChild(button);
     })
     const digitContainer = document.querySelector(".digitContainer");
-    const digits = Array.from(Array(10).keys());
     digits.forEach(digit => {
         const button = document.createElement("button");
         button.textContent = digit;
@@ -21,8 +22,11 @@ function generateCalculatorUI() {
 
 function changeInputDisplay(e) {
     const calculatorInput = document.querySelector(".calculatorInput");
-    const currInput = calculatorInput.textContent;
-    calculatorInput.textContent = currInput + e.target.id;
+    const currInput = calculatorInput.textContent ? calculatorInput.textContent : "";
+    const lastElem = currInput[currInput.length - 1];
+    const nextElem = e.target.id;
+    const spaces = digits.includes(parseInt(lastElem, 10)) && digits.includes(parseInt(nextElem, 10)) ? "" : " ";
+    calculatorInput.textContent = currInput + spaces + nextElem;
 }
 
 generateCalculatorUI();
