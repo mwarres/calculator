@@ -1,6 +1,6 @@
 function generateCalculatorUI() {
     const operatorContainer = document.querySelector(".operatorContainer");
-    const operators = ["+", "-", "x", "/", "="];
+    const operators = ["+", "-", "x", "/", "=", "AC"];
     operators.forEach(operator => {
         const button = document.createElement("button");
         button.textContent = operator;
