@@ -62,6 +62,7 @@ class Calculator {
         // Generate a clear button to clear calculator's input.
         const clearButton = document.createElement("button");
         clearButton.textContent = "AC";
+        clearButton.id = "AC";
         clearButton.addEventListener("click", this.clear.bind(this));
         operatorContainer.appendChild(clearButton);
 
